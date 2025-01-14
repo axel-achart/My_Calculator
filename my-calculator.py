@@ -8,7 +8,7 @@
 def choose_operation():
     while True:
         try:
-            print ("""\nAvailable operations :
+            print ("""Available operations :
     1 - Addition
     2 - Subtraction
     3 - Multiplication
@@ -27,10 +27,10 @@ def choose_operation():
                 print()
                 exit()      # To exit the program
             else:
-                print("Please enter a number between 1-7")
+                print("\nPlease enter a number between 1-7")
 
         except ValueError:
-                print("Please enter a number")
+                print("\nPlease enter a number")
 
 
 # Function to ask 2 numbers
@@ -115,11 +115,11 @@ def main(operation, numbers):
 # Function to show the menu and execute the program
 def menu():
     while True:
-        print("\nLaunching the calculator...")
         print("\n--- MENU ---")
         main(choose_operation(), ask_numbers())
 
 
 # Program execute only by myself
 if __name__ == "__main__":
+    print("\nLaunching the calculator...")
     menu()
