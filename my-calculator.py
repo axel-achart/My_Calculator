@@ -1,9 +1,4 @@
-# BONUS : Fonctionnalité historique à votre calculatrice
-# Possibilité d'effacer et réinitialiser l'historique
-# (Pas de base de donnée)
-
-
-# Function to Choose operation
+# Function to Choose operation (1st launch)
 def choose_operation():
     while True:
         try:
@@ -32,7 +27,7 @@ def choose_operation():
                 print("\nPlease enter a number")
 
 
-# Function to ask 2 numbers
+# Function to ask 2 numbers (2nd launch)
 def ask_numbers():
     while True:
         try:
@@ -45,7 +40,7 @@ def ask_numbers():
             print("Please enter a valid number")
 
 
-# Calculation functions
+# Calculation functions (use to calculate results)
 def addition(first_number, second_number):
     return first_number + second_number
 
@@ -68,7 +63,7 @@ def remainder(first_number, second_number):
     return first_number % second_number
 
 
-# Function History
+# Function History (4th launch)
 def settings_hist(hist, result):
     # Increment and Show
     hist.append(result)
@@ -94,20 +89,16 @@ def settings_hist(hist, result):
     # Total Clear
         ask_clear = str(input("\nDo you want to clear history ? (y/n) : "))
         if ask_clear == 'y' or ask_clear == 'yes':
-            hist = []
+            hist.clear()
             print()
             print(f"History update : {hist}")
         elif ask_clear == 'n' or ask_clear == 'no':
             print("\nHistory not clear")
 
-    return hist
 
 
-
-# Menu 
-def main(operation, numbers):
-
-    hist = []
+# Menu (3rd launch)
+def main(operation, numbers, hist):
 
     while True:
 
@@ -131,6 +122,7 @@ def main(operation, numbers):
     
 
         operation = int(operation)      # operation --> int
+
         if operation == 1:
             print()
             result = addition(first_number, second_number)
@@ -195,9 +187,10 @@ def main(operation, numbers):
 
 # Function to show the menu and execute the program
 def menu():
+    hist = []
     while True:
         print("\n--- MENU ---")
-        main(choose_operation(), ask_numbers())
+        main(choose_operation(), ask_numbers(), hist)
 
 
 # Program execute only by myself
