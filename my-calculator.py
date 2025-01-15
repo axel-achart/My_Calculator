@@ -1,7 +1,6 @@
 # BONUS : Fonctionnalité historique à votre calculatrice
 # Possibilité d'effacer et réinitialiser l'historique
 # (Pas de base de donnée)
-#
 
 
 # Function to Choose operation
@@ -72,9 +71,26 @@ def remainder(first_number, second_number):
 # Menu 
 def main(operation, numbers):
     while True:
+
         first_number, second_number  = numbers
-        first_number = float(first_number)      # 1st number --> float
-        second_number = float(second_number)        # 2nd number --> float
+
+        if first_number == int(first_number):       # verification if 1st numb is int
+            first_number = int(first_number)
+
+            if second_number == int(second_number):     # verification if 2nd numb is int
+                second_number =  int(second_number)
+            elif second_number == float(second_number):     # verification if 2nd numb is float
+                second_number = float(second_number)
+
+        elif first_number == float(first_number):       # verification if 1st numb is float
+            first_number = float(first_number)
+
+            if second_number == int(second_number):     # verification if 2nd numb is int
+                second_number =  int(second_number)
+            elif second_number == float(second_number):     # verification if 2nd numb is float
+                second_number = float(second_number)
+    
+
         operation = int(operation)      # operation --> int
         if operation == 1:
             print()
