@@ -7,7 +7,7 @@ def choose_operation():
     2 - Subtraction
     3 - Multiplication
     4 - Division
-    5 - Exponentiation (Power of a number)
+    5 - Power of a number
     6 - Quotient
     7 - Remainder
     8 - Exit""")
@@ -53,7 +53,7 @@ def multiplication(first_number, second_number):
 def division(first_number, second_number):
     return first_number / second_number
 
-def exponentiation(first_number, second_number):
+def power(first_number, second_number):
     return first_number ** second_number
 
 def quotient(first_number, second_number):
@@ -63,37 +63,63 @@ def remainder(first_number, second_number):
     return first_number % second_number
 
 
-# Function History (4th launch)
-def settings_hist(hist, result):
-    # Increment and Show
-    hist.append(result)
-    show_hist = str(input("\nDo you want to show history ? (y/n) : "))
-    if show_hist == 'y' or show_hist == 'yes':
-        print("History :", hist)
-    # Delete an Element
-        remove = str(input("\nDo you want to remove an element from history ? (y/n) : "))
-        if remove == 'y' or remove == 'yes':
-            while True:
-                try:
-                    delete = int(input(f"History contain {len(hist)} element(s), Enter the index of your choice (between 0 - {len(hist)-1}) : "))
-                    del hist[delete]
-                    print("History update : ", hist)
-                    break
-                except ValueError:
-                    print("\nPlease enter a valid number")
-                except IndexError:
-                    print("\nPlease enter a valid index")
-        elif remove == 'n' or remove == 'no':
-            print("\nNo items deleted")
 
-    # Total Clear
-        ask_clear = str(input("\nDo you want to clear history ? (y/n) : "))
-        if ask_clear == 'y' or ask_clear == 'yes':
-            hist.clear()
-            print()
-            print(f"History update : {hist}")
-        elif ask_clear == 'n' or ask_clear == 'no':
-            print("\nHistory not clear")
+
+
+
+# Function Show History
+def display_hist(hist, result):
+    hist.append(result)
+    while True:
+        try:
+            show_hist = str(input("\nDo you want to show history ? (y/n) : "))
+            if show_hist == 'y' or show_hist == 'yes':
+                print("\nHistory :", hist)
+                break
+            elif show_hist == 'n' or show_hist == 'no':
+                print("\nHistory not show")
+                break
+        except ValueError:
+            print("\nPlease enter a valid value (y/n)")
+
+# Function Delete an element
+def delete_hist(hist):
+    while True:
+        try:
+            remove = str(input("\nDo you want to remove an element from history ? (y/n) : "))
+            if remove == 'y' or remove == 'yes':
+                while True:
+                    try:
+                        delete = int(input(f"History contain {len(hist)} element(s), Enter the index of your choice (between 0 - {len(hist)-1}) : "))
+                        del hist[delete]
+                        print("\nHistory update : ", hist)
+                        break
+                    except ValueError:
+                        print("\nPlease enter a valid number")
+                    except IndexError:
+                        print("\nPlease enter a valid index")
+            elif remove == 'n' or remove == 'no':
+                print("\nNo items deleted")
+                break
+        except ValueError:
+            print("\nPlease enter a valid value (y/n)")
+
+# Function to reset history
+def reset_hist(hist):
+    while True:
+        try:
+            ask_reset = str(input("\nDo you want to clear history ? (y/n) : "))
+            if ask_reset == 'y' or ask_reset == 'yes':
+                hist.clear()
+                print()
+                print(f"History update : {hist}")
+                break
+            elif ask_reset == 'n' or ask_reset == 'no':
+                print("\nHistory not clear")
+                break
+        except ValueError:
+            print("\nPlease enter a valid value (y/n)")
+
 
 
 
@@ -127,21 +153,27 @@ def main(operation, numbers, hist):
             print()
             result = addition(first_number, second_number)
             print(first_number, '+', second_number, '=', result)
-            settings_hist(hist, result)
+            display_hist(hist, result)
+            delete_hist(hist)
+            reset_hist(hist)
             break
 
         elif operation == 2:
             print()
             result = subtraction(first_number, second_number)
             print(first_number, '-', second_number, '=', result)
-            settings_hist(hist, result)
+            display_hist(hist, result)
+            delete_hist(hist)
+            reset_hist(hist)
             break
         
         elif operation == 3:
             print()
             result = multiplication(first_number, second_number)
             print(first_number, '*', second_number, '=', result)
-            settings_hist(hist, result)
+            display_hist(hist, result)
+            delete_hist(hist)
+            reset_hist(hist)
             break
         
         elif operation == 4:
@@ -149,7 +181,9 @@ def main(operation, numbers, hist):
             while second_number != 0:
                 result = division(first_number, second_number)
                 print(first_number, '/', second_number, '=', result)
-                settings_hist(hist, result)
+                display_hist(hist, result)
+                delete_hist(hist)
+                reset_hist(hist)
                 break
             if second_number == 0:
                 print("Impossible division with divider = 0, retry")
@@ -157,9 +191,11 @@ def main(operation, numbers, hist):
         
         elif operation == 5:
             print()
-            result = exponentiation(first_number, second_number)
+            result = power(first_number, second_number)
             print(first_number, '**', second_number, '=', result)
-            settings_hist(hist, result)
+            display_hist(hist, result)
+            delete_hist(hist)
+            reset_hist(hist)
             break
         
         elif operation == 6:
@@ -167,7 +203,9 @@ def main(operation, numbers, hist):
             while second_number != 0:
                 result = quotient(first_number, second_number)
                 print(first_number, '//', second_number, '=', result)
-                settings_hist(hist, result)
+                display_hist(hist, result)
+                delete_hist(hist)
+                reset_hist(hist)
                 break
             if second_number == 0:
                     print("Impossible division with divider = 0, retry")
@@ -178,7 +216,9 @@ def main(operation, numbers, hist):
             while second_number != 0:
                 result = remainder(first_number, second_number)
                 print(first_number, '%', second_number, '=', result)
-                settings_hist(hist, result)
+                display_hist(hist, result)
+                delete_hist(hist)
+                reset_hist(hist)
                 break
             if second_number == 0:
                     print("Impossible division with divider = 0, retry")
