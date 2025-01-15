@@ -68,8 +68,47 @@ def remainder(first_number, second_number):
     return first_number % second_number
 
 
+# Function History
+def settings_hist(hist, result):
+    # Increment and Show
+    hist.append(result)
+    show_hist = str(input("\nDo you want to show history ? (y/n) : "))
+    if show_hist == 'y' or show_hist == 'yes':
+        print("History :", hist)
+    # Delete an Element
+        remove = str(input("\nDo you want to remove an element from history ? (y/n) : "))
+        if remove == 'y' or remove == 'yes':
+            while True:
+                try:
+                    delete = int(input(f"History contain {len(hist)} element(s), Enter the index of your choice (between 0 - {len(hist)-1}) : "))
+                    del hist[delete]
+                    print("History update : ", hist)
+                    break
+                except ValueError:
+                    print("\nPlease enter a valid number")
+                except IndexError:
+                    print("\nPlease enter a valid index")
+        elif remove == 'n' or remove == 'no':
+            print("\nNo items deleted")
+
+    # Total Clear
+        ask_clear = str(input("\nDo you want to clear history ? (y/n) : "))
+        if ask_clear == 'y' or ask_clear == 'yes':
+            hist = []
+            print()
+            print(f"History update : {hist}")
+        elif ask_clear == 'n' or ask_clear == 'no':
+            print("\nHistory not clear")
+
+    return hist
+
+
+
 # Menu 
 def main(operation, numbers):
+
+    hist = []
+
     while True:
 
         first_number, second_number  = numbers
@@ -94,38 +133,64 @@ def main(operation, numbers):
         operation = int(operation)      # operation --> int
         if operation == 1:
             print()
-            print(first_number, '+', second_number, '=', addition(first_number, second_number))
+            result = addition(first_number, second_number)
+            print(first_number, '+', second_number, '=', result)
+            settings_hist(hist, result)
             break
 
         elif operation == 2:
             print()
-            print(first_number, '-', second_number, '=', subtraction(first_number, second_number))
+            result = subtraction(first_number, second_number)
+            print(first_number, '-', second_number, '=', result)
+            settings_hist(hist, result)
             break
         
         elif operation == 3:
             print()
-            print(first_number, '*', second_number, '=', multiplication(first_number, second_number))
+            result = multiplication(first_number, second_number)
+            print(first_number, '*', second_number, '=', result)
+            settings_hist(hist, result)
             break
         
         elif operation == 4:
             print()
-            print(first_number, '/', second_number, '=', division(first_number, second_number))
-            break
+            while second_number != 0:
+                result = division(first_number, second_number)
+                print(first_number, '/', second_number, '=', result)
+                settings_hist(hist, result)
+                break
+            if second_number == 0:
+                print("Impossible division with divider = 0, retry")
+                break
         
         elif operation == 5:
             print()
-            print(first_number, '**', second_number, '=', exponentiation(first_number, second_number))
+            result = exponentiation(first_number, second_number)
+            print(first_number, '**', second_number, '=', result)
+            settings_hist(hist, result)
             break
         
         elif operation == 6:
             print()
-            print(first_number, '//', second_number, '=', quotient(first_number, second_number))
-            break
+            while second_number != 0:
+                result = quotient(first_number, second_number)
+                print(first_number, '//', second_number, '=', result)
+                settings_hist(hist, result)
+                break
+            if second_number == 0:
+                    print("Impossible division with divider = 0, retry")
+                    break
         
         elif operation == 7:
             print()
-            print(first_number, '%', second_number, '=', remainder(first_number, second_number))
-            break
+            while second_number != 0:
+                result = remainder(first_number, second_number)
+                print(first_number, '%', second_number, '=', result)
+                settings_hist(hist, result)
+                break
+            if second_number == 0:
+                    print("Impossible division with divider = 0, retry")
+                    break
 
 
 # Function to show the menu and execute the program
