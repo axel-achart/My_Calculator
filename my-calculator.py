@@ -21,7 +21,7 @@ def choose_operation():
                 print()
                 exit()      # To exit the program
             else:
-                print("\nPlease enter a number between 1-7")
+                print("\nPlease enter a number between 1-8")
 
         except ValueError:
                 print("\nPlease enter a number")
