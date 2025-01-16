@@ -33,11 +33,11 @@ def ask_numbers():
         try:
             first_number = float(input("\nEnter the first number : "))
             second_number = float(input("Enter the second number : "))
-            numbers = first_number, second_number
+            numbers = first_number, second_number       # Incrementation of 2 numbers in a variable
             return numbers
 
         except ValueError:
-            print("Please enter a valid number")
+            print("Please enter a valid number")        # If the entry of the user is a word, must be a number
 
 
 # Calculation functions (use to calculate results)
@@ -117,18 +117,18 @@ def reset_hist(hist):
     while True:
         try:
             ask_reset = str(input("\nDo you want to clear history ? (y/n) : "))
-            if ask_reset == 'y' or ask_reset == 'yes':
+            if ask_reset == 'y' or ask_reset == 'yes':      # If the user want to reset
                 hist.clear()
                 print()
                 print(f"History update : {hist}")
                 break
-            elif ask_reset == 'n' or ask_reset == 'no':
+            elif ask_reset == 'n' or ask_reset == 'no':     # If the user want to keep history
                 print("\nHistory not clear")
                 break
             else:
-                print("\nPlease enter 'y' or 'n'")
+                print("\nPlease enter 'y' or 'n'")      # If the user enter not y/yes or n/no
         except ValueError:
-            print("\nPlease enter a valid value (y/n)")
+            print("\nPlease enter a valid value (y/n)")     # If the user enter a number for example
 
 
 
