@@ -188,15 +188,15 @@ def main(operation, numbers, hist):
         
         elif operation == 4:
             print()
-            while second_number != 0:
+            if second_number == 0:
+                print("Impossible division with divider = 0, retry")
+                break
+            else:
                 result = division(first_number, second_number)
                 print(first_number, '/', second_number, '=', result)
                 display_hist(hist, result)
                 delete_hist(hist)
                 reset_hist(hist)
-                break
-            if second_number == 0:
-                print("Impossible division with divider = 0, retry")
                 break
         
         elif operation == 5:
@@ -210,29 +210,29 @@ def main(operation, numbers, hist):
         
         elif operation == 6:
             print()
-            while second_number != 0:
+            if second_number == 0:
+                print("Impossible division with divider = 0, retry")
+                break
+            else:
                 result = quotient(first_number, second_number)
                 print(first_number, '//', second_number, '=', result)
                 display_hist(hist, result)
                 delete_hist(hist)
                 reset_hist(hist)
                 break
-            if second_number == 0:
-                    print("Impossible division with divider = 0, retry")
-                    break
         
         elif operation == 7:
             print()
-            while second_number != 0:
+            if second_number == 0:
+                print("Impossible division with divider = 0, retry")
+                break
+            else:
                 result = remainder(first_number, second_number)
                 print(first_number, '%', second_number, '=', result)
                 display_hist(hist, result)
                 delete_hist(hist)
                 reset_hist(hist)
                 break
-            if second_number == 0:
-                    print("Impossible division with divider = 0, retry")
-                    break
 
 
 # Function to show "menu" and execute the program
