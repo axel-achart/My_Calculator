@@ -2,7 +2,7 @@
 def choose_operation():
     while True:
         try:
-            print ("""Available operations :
+            print ("""\n--- MENU ---\nAvailable operations :
     1 - Addition
     2 - Subtraction
     3 - Multiplication
@@ -67,7 +67,7 @@ def remainder(first_number, second_number):
 
 
 
-# Function Show History
+# Function Show History (4th launch)
 def display_hist(hist, result):
     hist.append(result)
     while True:
@@ -79,10 +79,12 @@ def display_hist(hist, result):
             elif show_hist == 'n' or show_hist == 'no':
                 print("\nHistory not show")
                 break
+            else:
+                print("\nPlease enter 'y' or 'n'")
         except ValueError:
             print("\nPlease enter a valid value (y/n)")
 
-# Function Delete an element
+# Function Delete an element (5th launch)
 def delete_hist(hist):
     while True:
         try:
@@ -90,10 +92,14 @@ def delete_hist(hist):
             if remove == 'y' or remove == 'yes':
                 while True:
                     try:
-                        delete = int(input(f"History contain {len(hist)} element(s), Enter the index of your choice (between 0 - {len(hist)-1}) : "))
-                        del hist[delete]
-                        print("\nHistory update : ", hist)
-                        break
+                        if hist != []:
+                            delete = int(input(f"History contain {len(hist)} element(s), Enter the index of your choice (between 0 - {len(hist)-1}) : "))
+                            del hist[delete]
+                            print("\nHistory update : ", hist)
+                            break
+                        else:
+                            print("History already empty, tap 'n' to continue")
+                            break
                     except ValueError:
                         print("\nPlease enter a valid number")
                     except IndexError:
@@ -101,10 +107,12 @@ def delete_hist(hist):
             elif remove == 'n' or remove == 'no':
                 print("\nNo items deleted")
                 break
+            else:
+                print("\nPlease enter 'y' or 'n'")
         except ValueError:
             print("\nPlease enter a valid value (y/n)")
 
-# Function to reset history
+# Function to reset history (6th launch)
 def reset_hist(hist):
     while True:
         try:
@@ -117,6 +125,8 @@ def reset_hist(hist):
             elif ask_reset == 'n' or ask_reset == 'no':
                 print("\nHistory not clear")
                 break
+            else:
+                print("\nPlease enter 'y' or 'n'")
         except ValueError:
             print("\nPlease enter a valid value (y/n)")
 
@@ -225,11 +235,10 @@ def main(operation, numbers, hist):
                     break
 
 
-# Function to show the menu and execute the program
+# Function to show "menu" and execute the program
 def menu():
     hist = []
     while True:
-        print("\n--- MENU ---")
         main(choose_operation(), ask_numbers(), hist)
 
 
