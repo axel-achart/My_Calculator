@@ -1,10 +1,8 @@
-# Notes
+# ORAL
+Présentation du projet (Objectifs, fonctionnalités, outils utilisés Github/Git Bash/VS Code, etc...) : Emma 
 
-on va demander l'opération
-on va demander 2 nombres
-EVITER LES ENTREES INVALIDES (spécifiques, dans le try/except)
+Organisation de groupe (Google Chat, Repository/Branch, Session de travail ensemble) : Oualid
 
-Biblio Math et eval() interdit
+Présentation du code (Les fonctions, le déroulement, les gestions d'erreurs etc...) : Alex/Axel (+ 1fonction "ask_numbers()" Oualid et 1fonction "reset_hist()" Emma)
 
-BONUS : Historique des anciens calculs (avec fichier local)
-Possibilité d'effacer et réinitialiser l'historique
+Démonstration du code : Axel
