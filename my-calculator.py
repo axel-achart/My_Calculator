@@ -214,7 +214,7 @@ def main(operation, numbers, hist):
         
 
 
-# Function to show "menu" and execute the program
+# Function to show "menu" and execute the program and initialisation of the list history
 def menu():
     hist = []
     while True:
