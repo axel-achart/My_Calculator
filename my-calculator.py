@@ -1,5 +1,6 @@
 import csv
 
+## function who ask the number to the user ##
 def number():
     while True:
         try:
@@ -9,6 +10,7 @@ def number():
         except ValueError:
             print("enter a number")
 
+## function who verified the format of the number
 def verif_Number(num_tuple):
     numb1= num_tuple[0]
     numb2 = num_tuple[1]
@@ -34,6 +36,7 @@ def verif_Number(num_tuple):
     print(numb1, numb2)
     return numb1, numb2
 
+## function who do the operations
 def operation(format_tuple, signs):
     num_format1 = format_tuple[0]
     num_format2 = format_tuple[1]
@@ -47,21 +50,25 @@ def operation(format_tuple, signs):
     elif signs == "*":
         return num_format1 * num_format2
 
+## function who display the result of the operation
 def display_result(result):
     print(f"here is your result : {result} ")
 
+##function who add the history to an external csv file
 def add_hist(hist): 
     print(hist)
     with open('history.csv','w', newline='')as file:
         writter = csv.writer(file)
         writter.writerow(hist)
 
+## function who display the history
 def show_hist():
     with open('history.csv', 'r') as file:
         read = csv.reader(file)
         for i in read:
             print(i)
 
+##function who delete an element from the external csv(history) file
 def del_an_element(hist):
     while True:
         try:
@@ -76,7 +83,7 @@ def del_an_element(hist):
         except IndexError:
             print("enter the number between the interval")
 
-
+## function who delete the entire history
 def del_hist(hist):
     hist.clear()
     with open('history.csv', 'w',newline='') as file:
