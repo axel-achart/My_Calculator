@@ -63,10 +63,6 @@ def remainder(first_number, second_number):
     return first_number % second_number
 
 
-
-
-
-
 # Function Show History (4th launch)
 def show_hist(hist, result):
     hist.append(result)
@@ -129,8 +125,6 @@ def reset_hist(hist):
                 print("\nPlease enter 'y' or 'n'")      # If the user enter not y/yes or n/no
         except ValueError:
             print("\nPlease enter a valid value (y/n)")     # If the user enter a number for example
-
-
 
 
 # Menu (3rd launch)
@@ -210,8 +204,6 @@ def main(operation, numbers, hist):
         delete_hist(hist)
         reset_hist(hist)
         break
-        
-        
 
 
 # Function to show "menu" and execute the program and initialisation of the list history
