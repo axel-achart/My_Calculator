@@ -1,110 +1,128 @@
+import csv
 
-## function who return the result##
-def calculator(n1, si, n2):
-    if si == "+":
-        result = n1 + n2
-        return result
-    elif si == "-":
-        result = n1 - n2
-        return result
-    elif si == "/":
-        result = n1 / n2
-        return result
-    elif si == "*":
-        result = n1 * n2
-        return result
-    elif si == "%":
-        result  = n1 % n2
-        return result
-
-## function who display the result ##
-def display_result(result):
-    print(f"here is your result : {result}")
-
-## function print a message when the wrong sign is enter ##
-def error():
-        print("you enter the wrong sign, please enter the right sign")
-        
-## function who return the number in integer or float depending on the user choice ##
-def number(Fl_Int):
-    if Fl_Int == "float":
-        while True:
-            try:
-                number1 = float(input("enter the 1st number : "))
-                number2 = float(input("enter the 2nd number : "))
-                return number1, number2
-                break
-            except ValueError:
-                print("choose the right value, this input can take an integer or a float")
-    elif Fl_Int == "int":
-        while True:
-            try:
-                number1 = int(input("enter the 1st number : "))
-                number2 = int(input("enter the 2nd number : "))
-                return number1, number2
-                break
-            except ValueError:
-                print("enter an integer")     
-
-## function who put the entire input in your history  ##
-def history(hystorique, num1, si, num2, res):
-    
-    his = f"{num1} {si} {num2} = {res}"
-    hystorique.append(his)
-    print("here is your calculator history")
-
-    for i in range(len(hystorique)):
-        print(f"index : {i} : {hystorique[i]}")
-    return hystorique
-
-## function where the user chose 1 element he want to delete of his history
-def remove(histori):
+def number():
     while True:
         try:
-            deleted = int(input(f" your calculator history contain {len(histori)} value, chose the value you want to delete between 0 and {len(histori) - 1} :  " ))
-            del histori[deleted]
-            print(histori)
+            num1 = float(input("Enter the 1st  number : "))
+            num2 = float(input("Enter the 2nd  number : "))
+            return num1, num2
+        except ValueError:
+            print("enter a number")
+
+def verif_Number(num_tuple):
+    numb1= num_tuple[0]
+    numb2 = num_tuple[1]
+
+    if numb1 == int(numb1):
+        numb1 = int(numb1)
+
+        if numb2 == int(numb2):
+            print("int")
+            numb2 = int(numb2)
+        elif numb2 == float(numb2):
+            print("float")
+            numb2 = float(numb2)
+
+    elif numb1 == float(numb1):
+        numb1 = float(numb1)
+
+        if numb2 == float(numb2):
+            numb2 = float(numb2)
+        elif numb2 == int(numb2):
+            numb2 = int(numb2)
+
+    print(numb1, numb2)
+    return numb1, numb2
+
+def operation(format_tuple, signs):
+    num_format1 = format_tuple[0]
+    num_format2 = format_tuple[1]
+
+    if signs == "+":
+        return num_format1 + num_format2
+    elif signs == "-":
+        return num_format1 - num_format2
+    elif signs == "/":
+        return num_format1 / num_format2
+    elif signs == "*":
+        return num_format1 * num_format2
+
+def display_result(result):
+    print(f"here is your result : {result} ")
+
+def add_hist(hist): 
+    print(hist)
+    with open('history.csv','w', newline='')as file:
+        writter = csv.writer(file)
+        writter.writerow(hist)
+
+def show_hist():
+    with open('history.csv', 'r') as file:
+        read = csv.reader(file)
+        for i in read:
+            print(i)
+
+def del_an_element(hist):
+    while True:
+        try:
+            choice2 = int(input(f"enter a number between 0 and {len(hist)-1}"))
+            del hist[choice2]
+            with open('history.csv', 'w', newline='') as file:
+                writter = csv.writer(file)
+                writter.writerow(hist)
             break
         except ValueError:
-            print("enter the correct number")
+            print("enter a number")
         except IndexError:
-            print("enter the correct index number you want to delete )")
-       
-## function where the history his entire deleted
-def reset(history):
-    print(f"before clear {history}")
-    history.clear()
-    print(f"after clear {history}")
+            print("enter the number between the interval")
 
- 
+
+def del_hist(hist):
+    hist.clear()
+    with open('history.csv', 'w',newline='') as file:
+        writter = csv.writer(file)
+        writter.writerow(hist)
+    show_hist()
+    
+
 def main():
-    historik = []
+    history = []
     while True:
-        fl_int= input("choose between int and float : int/float  ")
-        sign = input("enter the sign you want + - / * % : ")
-        
-        if sign != "+" and sign != "-" and sign != "*" and sign != "/" and sign != "%":
-            error()    
-        else:
-            num = number(fl_int)
-            calcul =  calculator(num[0], sign, num[1])
-            print(calcul)
-            display_result(calcul)
+        print("""
+            1 = use the calculator
+            2 = show history
+            3 = delete an element of your history
+            4 = delete the entire history
+            5 = exit your programmes
+            """)
+        try:
+            choice = int(input("chose a number between 1 and 5 : "))
+        ## choice_hist(choice)
+
+            if choice == 1:
+                number_tuple = number()
+                format_number = verif_Number(number_tuple) #format verification int float
+
+                sign = input("enter your sign : ")
+                result = operation(format_number, sign)
+                history.append(result)
+                print(history)
+                add_hist(history)
             
-            choice1 = input("do you want to see your calculator history ? Y/N : ").upper()
-            if choice1 == "Y":
-                histori = history(historik, num[0], sign, num[1], calcul)
+            if choice == 2:
+                show_hist()
             
-            choice2 = input("do you want to delete an element of your calculator history ? Y/N : ").upper()
-            if choice2 == "Y":
-                remove(histori)
+            if choice == 3:
+                del_an_element(history)
             
-            choice3 = input("do you want to delete all your calculator history ? Y/N : ").upper()
-            if choice3 == "Y":
-                reset(histori)
+            if choice == 4:
+                del_hist(history)
             
-            choice4 = input("do you want to stop the use of your calculator ? Y/N : ").upper()
-            if choice4 == "Y":
+            if choice == 5:
                 break
+            if choice > 5:
+                print("enter a number < 5")
+        except ValueError:
+            print("please enter a number")
 
 main()
