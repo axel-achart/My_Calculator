@@ -68,7 +68,7 @@ def remainder(first_number, second_number):
 
 
 # Function Show History (4th launch)
-def display_hist(hist, result):
+def show_hist(hist, result):
     hist.append(result)
     while True:
         try:
@@ -163,28 +163,16 @@ def main(operation, numbers, hist):
             print()
             result = addition(first_number, second_number)
             print(first_number, '+', second_number, '=', result)
-            display_hist(hist, result)
-            delete_hist(hist)
-            reset_hist(hist)
-            break
 
         elif operation == 2:
             print()
             result = subtraction(first_number, second_number)
             print(first_number, '-', second_number, '=', result)
-            display_hist(hist, result)
-            delete_hist(hist)
-            reset_hist(hist)
-            break
         
         elif operation == 3:
             print()
             result = multiplication(first_number, second_number)
             print(first_number, '*', second_number, '=', result)
-            display_hist(hist, result)
-            delete_hist(hist)
-            reset_hist(hist)
-            break
         
         elif operation == 4:
             print()
@@ -194,19 +182,11 @@ def main(operation, numbers, hist):
             else:
                 result = division(first_number, second_number)
                 print(first_number, '/', second_number, '=', result)
-                display_hist(hist, result)
-                delete_hist(hist)
-                reset_hist(hist)
-                break
         
         elif operation == 5:
             print()
             result = power(first_number, second_number)
             print(first_number, '**', second_number, '=', result)
-            display_hist(hist, result)
-            delete_hist(hist)
-            reset_hist(hist)
-            break
         
         elif operation == 6:
             print()
@@ -216,10 +196,6 @@ def main(operation, numbers, hist):
             else:
                 result = quotient(first_number, second_number)
                 print(first_number, '//', second_number, '=', result)
-                display_hist(hist, result)
-                delete_hist(hist)
-                reset_hist(hist)
-                break
         
         elif operation == 7:
             print()
@@ -229,10 +205,13 @@ def main(operation, numbers, hist):
             else:
                 result = remainder(first_number, second_number)
                 print(first_number, '%', second_number, '=', result)
-                display_hist(hist, result)
-                delete_hist(hist)
-                reset_hist(hist)
-                break
+        
+        show_hist(hist, result)
+        delete_hist(hist)
+        reset_hist(hist)
+        break
+        
+        
 
 
 # Function to show "menu" and execute the program
