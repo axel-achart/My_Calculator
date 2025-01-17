@@ -10,7 +10,7 @@ def choose_operation():
     5 - Power of a number
     6 - Quotient
     7 - Remainder
-    8 - Exit""")
+    8 - Exit (if you exit, history will be clear)""")
 
             operation = int(input("\nEnter your choice : "))
 
@@ -153,6 +153,7 @@ def main(operation, numbers, hist):
 
         operation = int(operation)      # operation --> int
 
+        # verification and execute calcul for each operation
         if operation == 1:
             print()
             result = addition(first_number, second_number)
@@ -200,6 +201,7 @@ def main(operation, numbers, hist):
                 result = remainder(first_number, second_number)
                 print(first_number, '%', second_number, '=', result)
         
+        # Call history functions
         show_hist(hist, result)
         delete_hist(hist)
         reset_hist(hist)
