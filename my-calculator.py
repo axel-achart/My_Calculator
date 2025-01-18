@@ -64,8 +64,7 @@ def remainder(first_number, second_number):
 
 
 # Function Show History (4th launch)
-def show_hist(hist, result):
-    hist.append(result)
+def show_hist(hist):
     while True:
         try:
             show_hist = str(input("\nDo you want to show history ? (y/n) : "))
@@ -201,8 +200,10 @@ def main(operation, numbers, hist):
                 result = remainder(first_number, second_number)
                 print(first_number, '%', second_number, '=', result)
         
+        # Integrate new result in history
+        hist.append(result)
         # Call history functions
-        show_hist(hist, result)
+        show_hist(hist)
         delete_hist(hist)
         reset_hist(hist)
         break
