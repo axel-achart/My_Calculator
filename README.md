@@ -1,9 +1,13 @@
-# Project
+# 🧮 My Calculator
 
-Dans le cadre de mon **cursus IT spécialisé en IA & Data**, j'ai développé en groupe ce projet de Calculatrice. </br>
-A l'aide d'outils comme *GitHub, Canva, Trello et Google Chat,* le travail en équipe a été d'une **excellente qualité.** </br>
-</br>
-Un projet comme celui-ci m'a permis de développer mes **compétences techniques** en programmation notamment en Python avec VS Code. </br>
-Mais également en compétences générales tels que le travail d'équipe, la collaboration, l'organisation, la priorisation des tâches, la résolution de problèmes et plus encore... </br>
-</br>
-La réalisation de ce projet a duré 5 jours. Et une soutenance oral permettant de nous entraîner sur notre présentation a été évalué en fin de projet. </br>
+This project is a **simple calculator** built using **Python**. It allows users to perform basic arithmetic operations.
+
+## 📂 Repository Contents
+
+- **`calculator.py`** – Main script that runs the calculator.
+- **`README.md`** – Project documentation.
+- **`.gitignore`** – Specifies files to be ignored by Git.
+
+## 🛠️ Technologies Used
+
+- **Python** – The primary programming language.
